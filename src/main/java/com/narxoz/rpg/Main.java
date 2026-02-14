@@ -1,65 +1,45 @@
 package com.narxoz.rpg;
 
-/**
- * Main demonstration class for the RPG Character & Equipment System.
- *
- * Your task: Demonstrate both Factory Method and Abstract Factory patterns working together.
- *
- * This file should showcase:
- * 1. Creating different character types using Factory Method pattern
- * 2. Equipping characters with themed equipment using Abstract Factory pattern
- * 3. Displaying character stats and equipment details
- *
- * Expected output flow:
- * - Create 3+ different characters
- * - Equip each with different themed equipment sets
- * - Show that the system is extensible and maintainable
- */
+import com.narxoz.rpg.character.Character;
+import com.narxoz.rpg.factory.*;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("=== RPG Character & Equipment System ===\n");
 
-        // TODO: Demonstrate Factory Method Pattern
-        // Create different character types (Warrior, Mage, Archer, etc.)
-        // Think: How can you create characters without using if-else chains?
-        // Think: What class/interface should handle character creation?
+        CharacterFactory warriorFactory = new WarriorFactory();
+        CharacterFactory mageFactory = new MageFactory();
+        CharacterFactory archerFactory = new ArcherFactory();
 
+        Character hero1 = warriorFactory.createCharacter("Dean");
+        Character hero2 = mageFactory.createCharacter("Sam");
+        Character hero3 = archerFactory.createCharacter("Castiel");
 
-        // TODO: Demonstrate Abstract Factory Pattern
-        // Create equipment sets (Medieval, Magic, Ranger, etc.)
-        // Think: How do you ensure weapons and armor from same theme are created together?
-        // Think: What guarantees a Medieval sword comes with Medieval armor?
+        EquipmentFactory medievalFactory = new MedievalFactory();
+        EquipmentFactory magicFactory = new MagicFactory();
+        EquipmentFactory rangerFactory = new RangerFactory();
 
+        System.out.println("Equipping " + hero1.getName() + "...");
+        hero1.equipWeapon(medievalFactory.createWeapon());
+        hero1.equipArmor(medievalFactory.createArmor());
 
-        // TODO: Show character stats
-        // Display each character's attributes (health, mana, strength, intelligence)
-        // Show their special abilities
+        System.out.println("Equipping " + hero2.getName() + "...");
+        hero2.equipWeapon(magicFactory.createWeapon());
+        hero2.equipArmor(magicFactory.createArmor());
 
+        System.out.println("Equipping " + hero3.getName() + "...");
+        hero3.equipWeapon(rangerFactory.createWeapon());
+        hero3.equipArmor(rangerFactory.createArmor());
 
-        // TODO: Equip characters with different themed sets
-        // Warrior with Medieval equipment
-        // Mage with Magic equipment
-        // Archer with Ranger equipment
-        // etc.
+        hero1.displayStats();
+        hero1.useSpecialAbility();
 
+        hero2.displayStats();
+        hero2.useSpecialAbility();
 
-        // TODO: Display equipped items
-        // Show weapon details (damage, special properties)
-        // Show armor details (defense, special properties)
-
-
-        // TODO: (Optional) Demonstrate extensibility
-        // In comments, explain how easy it would be to:
-        // - Add a new character class (e.g., Rogue, Paladin)
-        // - Add a new equipment theme (e.g., Dragon Slayer, Undead)
-
+        hero3.displayStats();
+        hero3.useSpecialAbility();
 
         System.out.println("\n=== Demo Complete ===");
     }
-
-    // TODO: Add helper methods as needed
-    // Consider methods like:
-    // - createAndDisplayCharacter(...)
-    // - equipCharacter(...)
-    // - displayCharacterInfo(...)
 }

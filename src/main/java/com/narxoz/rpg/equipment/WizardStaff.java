@@ -1,17 +1,15 @@
 package com.narxoz.rpg.equipment;
 
-public class IronSword implements Weapon {
+public class WizardStaff implements Weapon {
 
     private int damage;
     private String weaponType;
-    private int durability;
-    private double weight;
+    private int manaBoost;
 
-    public IronSword() {
-        this.damage = 25;
-        this.weaponType = "Sword";
-        this.durability = 100;
-        this.weight = 2.5;
+    public WizardStaff() {
+        this.damage = 15;
+        this.weaponType = "Staff";
+        this.manaBoost = 50;
     }
 
     @Override
@@ -19,7 +17,6 @@ public class IronSword implements Weapon {
         return damage;
     }
 
-    // ДОБАВЛЯЕМ ЭТОТ МЕТОД:
     @Override
     public String getWeaponType() {
         return weaponType;
@@ -27,7 +24,7 @@ public class IronSword implements Weapon {
 
     @Override
     public String getWeaponInfo() {
-        return "Iron Sword (Medieval) - A sturdy blade forged from iron";
+        return "Wizard Staff (Magic) - A wooden staff pulsing with arcane energy";
     }
 
     @Override
@@ -35,7 +32,6 @@ public class IronSword implements Weapon {
         System.out.println("Weapon: " + getWeaponInfo());
         System.out.println("Damage: " + damage);
         System.out.println("Type: " + weaponType);
-        System.out.println("Durability: " + durability + "%");
-        System.out.println("Weight: " + weight + " kg");
+        System.out.println("Mana Boost: +" + manaBoost);
     }
 }

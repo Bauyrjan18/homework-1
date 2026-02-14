@@ -19,7 +19,6 @@ public class IronSword implements Weapon {
         return damage;
     }
 
-    // ДОБАВЛЯЕМ ЭТОТ МЕТОД:
     @Override
     public String getWeaponType() {
         return weaponType;
